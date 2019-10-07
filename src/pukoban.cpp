@@ -21,15 +21,15 @@ INPUT_FAIL:
 	return (0);
 }
 
-static int dx[] = {-1, 1, 0, 0};
-static int dy[] = {0, 0, -1, 1};
+int const dx[] = {-1, 1, 0, 0};
+int const dy[] = {0, 0, -1, 1};
 
 // out-of-bound or not
 bool out ( BOARD &b, int x, int y ) { 
 	return (x<0 or y<0 or x>=b.n or y>=b.m); 
 }
 // valid or not
-bool valid ( BOARD b, MOVE &m ) {
+bool valid ( BOARD &b, MOVE &m ) {
 	int x, y;
 	b.player(&x, &y);
 	int xx = x+dx[m.dir];

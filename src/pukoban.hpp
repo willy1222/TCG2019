@@ -9,6 +9,7 @@
 
 // C++
 #include <cstdio>
+#include <cstdlib>
 #include <cassert>
 // STL
 #include <vector>
@@ -99,6 +100,11 @@ struct _move {
 		fprintf(stdout, "move: %c, drag: %d\n", o_char[0][dir], drag);
 		fprintf(stdout, "pulled: %d, pushed: %d\n", pulled, pushed);
 	}
+    char to_char() {
+        int o = pushed+(pulled<<1);
+        assert(o < 3);
+        return o_char[o][dir];
+    }
 };
 typedef _move MOVE;
 typedef std::vector<MOVE> HISTORY;
@@ -229,5 +235,8 @@ extern bool get_board ( FILE *f_in, BOARD &b );
 extern bool out ( BOARD &b, int x, int y );
 extern bool do_move ( BOARD &b, MOVE &m );
 extern bool undo_move ( BOARD &b );
+
+extern const int dx[];
+extern const int dy[];
 
 #endif
