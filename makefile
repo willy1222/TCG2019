@@ -6,13 +6,16 @@ DEL = rm -f
 
 all: $(target)
 
+$(SRC)/%.o: $(SRC)/%.cpp $(SRC)/%.hpp
+	g++ $(CPPFLAGS) $< -c -o $@
+
 $(SRC)/%.o: $(SRC)/%.cpp
 	g++ $(CPPFLAGS) $< -c -o $@
 
 %: $(SRC)/%.cpp $(SRC)/pukoban.o
 	g++ $(CPPFLAGS) $^ -o $@
 
-pukoban: $(SRC)/game.o $(SRC)/getch.o $(SRC)/pukoban.o 
+pukoban: $(SRC)/game.o $(SRC)/getch.o $(SRC)/pukoban.o
 	g++ $(CPPFLAGS) $^ -o $@
 verifier: $(SRC)/verifier.o $(SRC)/pukoban.o
 	g++ $(CPPFLAGS) $^ -o $@
