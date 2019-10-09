@@ -171,7 +171,7 @@ int main(int argc, char **argv){
 #define CLEAR_SCREEN fprintf(stdout, "\033[H\033[J")
 #define CLEAR_LINE(line) for(int i=0;i<line; ++i) { fprintf(stdout, "\033[1F\033[2K"); }
             BOARD b;
-#define PRIME_N 700001
+#define PRIME_N 7000013
             hash_init();
             for(int stage=1; get_board(f_in, b); ++stage){
                 bool visited[PRIME_N] = {false};
